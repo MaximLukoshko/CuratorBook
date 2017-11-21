@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contract\DataModels\" />
-    <Folder Include="Contract\MainService\" />
     <Folder Include="Contract\Notifier\" />
   </ItemGroup>
 
