@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using CuratorBook.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CuratorBook
 {
@@ -21,11 +23,13 @@ namespace CuratorBook
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<CuratorBookDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("CuratorBookConnection")));
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, CuratorBookDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -45,6 +49,8 @@ namespace CuratorBook
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            context.Database.EnsureCreated();
         }
     }
 }
