@@ -12,5 +12,8 @@ namespace CuratorBook.Models
         public DbSet<Forms> Forms { get; set; }
         protected DbSet<FormsControls> FormsControls { get; set; }
         protected DbSet<Controls> Controls { get; set; }
+
+        public DbSet<Rights> Rights { get; set; }
+        protected DbSet<PagesRights> PagesRights { get; set; }
     }
 }

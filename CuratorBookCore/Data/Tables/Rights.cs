@@ -1,20 +1,15 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CuratorBookCore.Data.Tables
 {
-    public class Pages
+    public class Rights
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-
-        [StringLength(150)]
         [Index(IsUnique = true)]
+        [StringLength(50)]
         public string Name { get; set; }
-
-
-        public ICollection<Forms> Forms { get; set; }
     }
 }
