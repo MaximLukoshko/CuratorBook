@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CuratorBookCore.Data.Tables;
+using Microsoft.EntityFrameworkCore;
 
 namespace CuratorBook.Models
 {
@@ -6,5 +7,10 @@ namespace CuratorBook.Models
     {
         public CuratorBookDbContext(DbContextOptions<CuratorBookDbContext> options) : base(options)
         { }
+
+        public DbSet<Pages> Pages { get; set; }
+        public DbSet<Forms> Forms { get; set; }
+        protected DbSet<FormsControls> FormsControls { get; set; }
+        protected DbSet<Controls> Controls { get; set; }
     }
 }
