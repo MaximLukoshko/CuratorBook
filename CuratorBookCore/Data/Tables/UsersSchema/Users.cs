@@ -22,9 +22,6 @@ namespace CuratorBookCore.Data.Tables
         public Roles Role { get; set; }
 
 
-        public Interviews Interview { get; set; }
-
-
         [StringLength(20)]
         public string Login { get; set; }
 

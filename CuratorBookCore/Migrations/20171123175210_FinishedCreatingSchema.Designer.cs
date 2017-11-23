@@ -12,9 +12,10 @@ using System;
 namespace CuratorBookCore.Migrations
 {
     [DbContext(typeof(CuratorBookDbContext))]
-    partial class CuratorBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171123175210_FinishedCreatingSchema")]
+    partial class FinishedCreatingSchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
