@@ -3,6 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CuratorBookCore.Data.Tables
 {
+    public enum PermissionTypes
+    {
+        Read,
+        Write,
+    }
+
     public class Rights
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
