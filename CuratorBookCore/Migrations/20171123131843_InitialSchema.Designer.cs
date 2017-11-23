@@ -12,8 +12,8 @@ using System;
 namespace CuratorBookCore.Migrations
 {
     [DbContext(typeof(CuratorBookDbContext))]
-    [Migration("20171123120012_Initial-Migration")]
-    partial class InitialMigration
+    [Migration("20171123131843_InitialSchema")]
+    partial class InitialSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

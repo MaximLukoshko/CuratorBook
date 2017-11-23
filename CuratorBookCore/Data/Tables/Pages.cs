@@ -11,7 +11,6 @@ namespace CuratorBookCore.Data.Tables
 
 
         [StringLength(150)]
-        [Index(IsUnique = true)]
         public string Name { get; set; }
 
 

@@ -1,4 +1,4 @@
-﻿IF OBJECT_ID(N'__EFMigrationsHistory') IS NULL
+IF OBJECT_ID(N'__EFMigrationsHistory') IS NULL
 BEGIN
     CREATE TABLE [__EFMigrationsHistory] (
         [MigrationId] nvarchar(150) NOT NULL,
@@ -83,7 +83,7 @@ CREATE INDEX [IX_PagesRights_RightId] ON [PagesRights] ([RightId]);
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20171123120012_Initial-Migration', N'2.0.1-rtm-125');
+VALUES (N'20171123131843_InitialSchema', N'2.0.1-rtm-125');
 
 GO
 

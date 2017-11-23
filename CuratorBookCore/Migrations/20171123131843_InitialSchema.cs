@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CuratorBookCore.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialSchema : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
