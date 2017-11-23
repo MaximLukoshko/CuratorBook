@@ -12,8 +12,8 @@ using System;
 namespace CuratorBookCore.Migrations
 {
     [DbContext(typeof(CuratorBookDbContext))]
-    [Migration("20171123105407_CreateSchema")]
-    partial class CreateSchema
+    [Migration("20171123120012_Initial-Migration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,11 +63,13 @@ namespace CuratorBookCore.Migrations
 
                     b.Property<int>("FormId");
 
+                    b.Property<int?>("FormsId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ControlId");
 
-                    b.HasIndex("FormId");
+                    b.HasIndex("FormsId");
 
                     b.ToTable("FormsControls");
                 });
@@ -85,10 +87,39 @@ namespace CuratorBookCore.Migrations
                     b.ToTable("Pages");
                 });
 
+            modelBuilder.Entity("CuratorBookCore.Data.Tables.PagesRights", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("PageId");
+
+                    b.Property<int>("RightId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RightId");
+
+                    b.ToTable("PagesRights");
+                });
+
+            modelBuilder.Entity("CuratorBookCore.Data.Tables.Rights", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Rights");
+                });
+
             modelBuilder.Entity("CuratorBookCore.Data.Tables.Forms", b =>
                 {
                     b.HasOne("CuratorBookCore.Data.Tables.Pages", "Page")
-                        .WithMany()
+                        .WithMany("Forms")
                         .HasForeignKey("PageId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -100,9 +131,16 @@ namespace CuratorBookCore.Migrations
                         .HasForeignKey("ControlId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("CuratorBookCore.Data.Tables.Forms", "Form")
+                    b.HasOne("CuratorBookCore.Data.Tables.Forms")
                         .WithMany("Controls")
-                        .HasForeignKey("FormId")
+                        .HasForeignKey("FormsId");
+                });
+
+            modelBuilder.Entity("CuratorBookCore.Data.Tables.PagesRights", b =>
+                {
+                    b.HasOne("CuratorBookCore.Data.Tables.Rights", "Right")
+                        .WithMany()
+                        .HasForeignKey("RightId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
