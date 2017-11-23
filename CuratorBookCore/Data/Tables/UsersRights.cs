@@ -16,5 +16,8 @@ namespace CuratorBookCore.Data.Tables
 
         [ForeignKey("RightId")]
         public Rights Right { get; set; }
+
+
+        public PermissionTypes Permission { get; set; }
     }
 }
