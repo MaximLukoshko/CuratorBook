@@ -1,4 +1,5 @@
 ﻿using CuratorBookCore.Data.Tables;
+using CuratorBookCore.Data.Tables.FormsSchema;
 using Microsoft.EntityFrameworkCore;
 
 namespace CuratorBook.Models
@@ -16,7 +17,8 @@ namespace CuratorBook.Models
         public DbSet<Rights> Rights { get; set; }
         protected DbSet<PagesRights> PagesRights { get; set; }
 
-        public DbSet<Answers> Answers { get; set; }
+        public DbSet<AnswerRows> AnswerRows { get; set; }
+        protected DbSet<AnswerValues> AnswerValues { get; set; }
 
         public DbSet<Groups> Groups { get; set; }
 
