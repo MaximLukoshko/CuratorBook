@@ -1,35 +1,33 @@
-﻿using CuratorBookCore.Contract.DataModels;
-using CuratorBookCore.Contract.DataModels.Answers;
-using CuratorBookCore.Contract.DataModels.Rights;
+﻿using CuratorBookCore.Data.Tables;
 using System.Collections.Generic;
 
 namespace CuratorBookCore.Contract.MainService
 {
     public interface IMainService
     {
-        string GetPictureForCommonPage(string pageId);
+        string GetPictureForCommonPage(int pageId);
 
-        FormsModel GetFormModel(int pageId);
+        Forms GetFormModel(int pageId);
 
-        AnswersModel GetAnswers(int formId, int groupId);
-        void SaveAnswers(int formId, int groupId, AnswersModel model);
+        IList<AnswerRows> GetAnswers(int formId, int groupId);
+        void SaveAnswers(int formId, int groupId, IList<AnswerRows> model);
 
-        AnswersModel GetTemplatesForUser(int formId, int userId);
-        void SaveTemplatesForUser(int formId, int userId, AnswersModel templates);
+        IList<AnswerRows> GetTemplatesForUser(int formId, int userId);
+        void SaveTemplatesForUser(int formId, int userId, IList<AnswerRows> templates);
 
-        void PushMessage(MessageModel msg);
-        IList<MessageModel> GetMessages(int userId);
+        void PushMessage(Messages msg);
+        IList<Messages> GetMessages(int userId);
 
-        AnswersModel GetSchedule(int groupId);
-        void SaveSchedule(int groupId, AnswersModel templates);
+        IList<AnswerRows> GetSchedule(int groupId);
+        void SaveSchedule(int groupId, IList<AnswerRows> templates);
 
-        InterviewModel GetInterview(int userId);
-        void SaveInterview(int userId, InterviewModel interview);
+        Interviews GetInterview(int userId);
+        void SaveInterview(int userId, Interviews interview);
 
-        IList<RightForRoles> GetRightsForRoles();
-        void SaveRightForRoles(RightForRoles right);
+        IList<RolesRights> GetRightsForRoles();
+        void SaveRightForRoles(RolesRights right);
 
-        IList<RightForUsers> GetRightsForUsers();
-        void SaveRightForUsers(RightForUsers right);
+        IList<UsersRights> GetRightsForUsers();
+        void SaveRightForUsers(UsersRights right);
     }
 }

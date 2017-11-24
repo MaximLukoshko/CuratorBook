@@ -23,7 +23,7 @@ namespace CuratorBook.Models
         public DbSet<Groups> Groups { get; set; }
 
         public DbSet<Roles> Roles { get; set; }
-        protected DbSet<RolesRights> RolesRights { get; set; }
+        public DbSet<RolesRights> RolesRights { get; set; }
 
 
     }

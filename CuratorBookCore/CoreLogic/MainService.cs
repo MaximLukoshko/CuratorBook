@@ -1,88 +1,86 @@
 ﻿using System.Collections.Generic;
-using CuratorBookCore.Contract.DataModels;
-using CuratorBookCore.Contract.DataModels.Answers;
-using CuratorBookCore.Contract.DataModels.Rights;
+using CuratorBookCore.Data.Tables;
 
 namespace CuratorBookCore.Contract.MainService
 {
     public class MainService : IMainService
     {
-        public AnswersModel GetAnswers(int formId, int groupId)
+        public IList<AnswerRows> GetAnswers(int formId, int groupId)
         {
             throw new System.NotImplementedException();
         }
 
-        public FormsModel GetFormModel(int pageId)
+        public Forms GetFormModel(int pageId)
         {
             throw new System.NotImplementedException();
         }
 
-        public InterviewModel GetInterview(int userId)
+        public Interviews GetInterview(int userId)
         {
             throw new System.NotImplementedException();
         }
 
-        public IList<MessageModel> GetMessages(int userId)
+        public IList<Messages> GetMessages(int userId)
         {
             throw new System.NotImplementedException();
         }
 
-        public string GetPictureForCommonPage(string pageId)
+        public string GetPictureForCommonPage(int pageId)
         {
             throw new System.NotImplementedException();
         }
 
-        public IList<RightForRoles> GetRightsForRoles()
+        public IList<RolesRights> GetRightsForRoles()
         {
             throw new System.NotImplementedException();
         }
 
-        public IList<RightForUsers> GetRightsForUsers()
+        public IList<UsersRights> GetRightsForUsers()
         {
             throw new System.NotImplementedException();
         }
 
-        public AnswersModel GetSchedule(int groupId)
+        public IList<AnswerRows> GetSchedule(int groupId)
         {
             throw new System.NotImplementedException();
         }
 
-        public AnswersModel GetTemplatesForUser(int formId, int userId)
+        public IList<AnswerRows> GetTemplatesForUser(int formId, int userId)
         {
             throw new System.NotImplementedException();
         }
 
-        public void PushMessage(MessageModel msg)
+        public void PushMessage(Messages msg)
         {
             throw new System.NotImplementedException();
         }
 
-        public void SaveAnswers(int formId, int groupId, AnswersModel model)
+        public void SaveAnswers(int formId, int groupId, IList<AnswerRows> model)
         {
             throw new System.NotImplementedException();
         }
 
-        public void SaveInterview(int userId, InterviewModel interview)
+        public void SaveInterview(int userId, Interviews interview)
         {
             throw new System.NotImplementedException();
         }
 
-        public void SaveRightForRoles(RightForRoles right)
+        public void SaveRightForRoles(RolesRights right)
         {
             throw new System.NotImplementedException();
         }
 
-        public void SaveRightForUsers(RightForUsers right)
+        public void SaveRightForUsers(UsersRights right)
         {
             throw new System.NotImplementedException();
         }
 
-        public void SaveSchedule(int groupId, AnswersModel templates)
+        public void SaveSchedule(int groupId, IList<AnswerRows> templates)
         {
             throw new System.NotImplementedException();
         }
 
-        public void SaveTemplatesForUser(int formId, int userId, AnswersModel templates)
+        public void SaveTemplatesForUser(int formId, int userId, IList<AnswerRows> templates)
         {
             throw new System.NotImplementedException();
         }
