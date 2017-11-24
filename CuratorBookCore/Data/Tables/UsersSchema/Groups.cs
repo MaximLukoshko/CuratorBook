@@ -12,8 +12,8 @@ namespace CuratorBookCore.Data.Tables
 
         public int Course { get; set; }
 
-        [Required]
-        public int SpecialityId { get; set; }
+
+        public int? SpecialityId { get; set; }
 
         [ForeignKey("SpecialityId")]
         public Specialities Speciality { get; set; }

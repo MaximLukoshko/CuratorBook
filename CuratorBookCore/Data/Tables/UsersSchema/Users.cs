@@ -9,7 +9,7 @@ namespace CuratorBookCore.Data.Tables
         public int Id { get; set; }
 
 
-        public int GroupId { get; set; }
+        public int? GroupId { get; set; }
 
         [ForeignKey("GroupId")]
         public Groups Group { get; set; }

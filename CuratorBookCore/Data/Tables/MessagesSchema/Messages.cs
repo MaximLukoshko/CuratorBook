@@ -17,13 +17,13 @@ namespace CuratorBookCore.Data.Tables
         public Users Sender { get; set; }
 
 
-        public int ReceiverId { get; set; }
+        public int? ReceiverId { get; set; }
 
         [ForeignKey("ReceiverId")]
         public Users Receiver { get; set; }
 
 
-        public int ReceiverGroupId { get; set; }
+        public int? ReceiverGroupId { get; set; }
 
         [ForeignKey("ReceiverGroupId")]
         public Groups ReceiverGroup { get; set; }

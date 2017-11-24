@@ -119,7 +119,7 @@ namespace CuratorBookCore.Migrations
                     b.Property<string>("GroupCode")
                         .HasMaxLength(10);
 
-                    b.Property<int>("SpecialityId");
+                    b.Property<int?>("SpecialityId");
 
                     b.HasKey("Id");
 
@@ -147,9 +147,9 @@ namespace CuratorBookCore.Migrations
 
                     b.Property<bool>("NotifyViaEmail");
 
-                    b.Property<int>("ReceiverGroupId");
+                    b.Property<int?>("ReceiverGroupId");
 
-                    b.Property<int>("ReceiverId");
+                    b.Property<int?>("ReceiverId");
 
                     b.Property<int>("SenderId");
 
@@ -338,21 +338,18 @@ namespace CuratorBookCore.Migrations
                 {
                     b.HasOne("CuratorBookCore.Data.Tables.Specialities", "Speciality")
                         .WithMany()
-                        .HasForeignKey("SpecialityId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("SpecialityId");
                 });
 
             modelBuilder.Entity("CuratorBookCore.Data.Tables.Messages", b =>
                 {
                     b.HasOne("CuratorBookCore.Data.Tables.Groups", "ReceiverGroup")
                         .WithMany()
-                        .HasForeignKey("ReceiverGroupId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ReceiverGroupId");
 
                     b.HasOne("CuratorBookCore.Data.Tables.Users", "Receiver")
                         .WithMany()
-                        .HasForeignKey("ReceiverId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ReceiverId");
 
                     b.HasOne("CuratorBookCore.Data.Tables.Users", "Sender")
                         .WithMany()

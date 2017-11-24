@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using CuratorBook.Models;
 using CuratorBookCore.Contract.MainService;
-using CuratorBookCore.Data;
 
 namespace CuratorBook.Controllers
 {
