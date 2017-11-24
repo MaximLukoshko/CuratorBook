@@ -128,6 +128,46 @@ namespace CuratorBookCore.Migrations
                     b.ToTable("Groups");
                 });
 
+            modelBuilder.Entity("CuratorBookCore.Data.Tables.Interviews", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Interviews");
+                });
+
+            modelBuilder.Entity("CuratorBookCore.Data.Tables.Messages", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("NotifyViaEmail");
+
+                    b.Property<int>("ReceiverGroupId");
+
+                    b.Property<int>("ReceiverId");
+
+                    b.Property<int>("SenderId");
+
+                    b.Property<DateTime>("SentDate");
+
+                    b.Property<string>("Text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReceiverGroupId");
+
+                    b.HasIndex("ReceiverId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Messages");
+                });
+
             modelBuilder.Entity("CuratorBookCore.Data.Tables.Pages", b =>
                 {
                     b.Property<int>("Id")
@@ -248,6 +288,24 @@ namespace CuratorBookCore.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("CuratorBookCore.Data.Tables.UsersRights", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Permission");
+
+                    b.Property<int>("RightId");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RightId");
+
+                    b.ToTable("UsersRights");
+                });
+
             modelBuilder.Entity("CuratorBookCore.Data.Tables.Forms", b =>
                 {
                     b.HasOne("CuratorBookCore.Data.Tables.Pages", "Page")
@@ -284,6 +342,24 @@ namespace CuratorBookCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("CuratorBookCore.Data.Tables.Messages", b =>
+                {
+                    b.HasOne("CuratorBookCore.Data.Tables.Groups", "ReceiverGroup")
+                        .WithMany()
+                        .HasForeignKey("ReceiverGroupId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CuratorBookCore.Data.Tables.Users", "Receiver")
+                        .WithMany()
+                        .HasForeignKey("ReceiverId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CuratorBookCore.Data.Tables.Users", "Sender")
+                        .WithMany()
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("CuratorBookCore.Data.Tables.PagesRights", b =>
                 {
                     b.HasOne("CuratorBookCore.Data.Tables.Rights", "Right")
@@ -314,6 +390,14 @@ namespace CuratorBookCore.Migrations
                     b.HasOne("CuratorBookCore.Data.Tables.Roles", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CuratorBookCore.Data.Tables.UsersRights", b =>
+                {
+                    b.HasOne("CuratorBookCore.Data.Tables.Rights", "Right")
+                        .WithMany()
+                        .HasForeignKey("RightId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

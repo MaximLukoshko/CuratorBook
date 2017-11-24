@@ -205,6 +205,41 @@ CREATE TABLE [AnswerRows] (
 
 GO
 
+CREATE TABLE [Interviews] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] int NOT NULL,
+    CONSTRAINT [PK_Interviews] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [Messages] (
+    [Id] int NOT NULL IDENTITY,
+    [NotifyViaEmail] bit NOT NULL,
+    [ReceiverGroupId] int NOT NULL,
+    [ReceiverId] int NOT NULL,
+    [SenderId] int NOT NULL,
+    [SentDate] datetime2 NOT NULL,
+    [Text] nvarchar(max) NULL,
+    CONSTRAINT [PK_Messages] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Messages_Groups_ReceiverGroupId] FOREIGN KEY ([ReceiverGroupId]) REFERENCES [Groups] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Messages_Users_ReceiverId] FOREIGN KEY ([ReceiverId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Messages_Users_SenderId] FOREIGN KEY ([SenderId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
+CREATE TABLE [UsersRights] (
+    [Id] int NOT NULL IDENTITY,
+    [Permission] int NOT NULL,
+    [RightId] int NOT NULL,
+    [UserId] int NOT NULL,
+    CONSTRAINT [PK_UsersRights] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_UsersRights_Rights_RightId] FOREIGN KEY ([RightId]) REFERENCES [Rights] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
 CREATE TABLE [AnswerValues] (
     [Id] int NOT NULL IDENTITY,
     [AnswerRowsId] int NOT NULL,
@@ -220,8 +255,24 @@ CREATE INDEX [IX_AnswerValues_AnswerRowsId] ON [AnswerValues] ([AnswerRowsId]);
 
 GO
 
+CREATE INDEX [IX_Messages_ReceiverGroupId] ON [Messages] ([ReceiverGroupId]);
+
+GO
+
+CREATE INDEX [IX_Messages_ReceiverId] ON [Messages] ([ReceiverId]);
+
+GO
+
+CREATE INDEX [IX_Messages_SenderId] ON [Messages] ([SenderId]);
+
+GO
+
+CREATE INDEX [IX_UsersRights_RightId] ON [UsersRights] ([RightId]);
+
+GO
+
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20171124182443_AnswerRows', N'2.0.1-rtm-125');
+VALUES (N'20171124183800_AnswerRows', N'2.0.1-rtm-125');
 
 GO
 
