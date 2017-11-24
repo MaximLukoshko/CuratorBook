@@ -6,8 +6,10 @@ namespace CuratorBook.Models
 {
     public partial class CuratorBookDbContext : DbContext
     {
-        public CuratorBookDbContext(DbContextOptions<CuratorBookDbContext> options) : base(options)
-        { }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Server = MAXIMUS; Database = CuratorBook; Trusted_Connection = True; MultipleActiveResultSets = true");
+        }
 
         public DbSet<AnswerRows> AnswerRows { get; set; }
         protected DbSet<AnswerValues> AnswerValues { get; set; }

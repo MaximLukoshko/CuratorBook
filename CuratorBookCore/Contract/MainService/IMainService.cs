@@ -5,6 +5,8 @@ namespace CuratorBookCore.Contract.MainService
 {
     public interface IMainService
     {
+        IList<Pages> GetListPages();
+
         string GetPictureForCommonPage(int pageId);
 
         Forms GetFormModel(int pageId);

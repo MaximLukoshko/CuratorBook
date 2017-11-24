@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using CuratorBook.Models;
+using CuratorBookCore.Contract.MainService;
+using CuratorBookCore.Data;
 
 namespace CuratorBook.Controllers
 {
     public class HomeController : Controller
     {
+        protected IMainService Service = new MainService();
+
         public IActionResult Index()
         {
+            var pages = Service.GetListPages();
             return View();
         }
 

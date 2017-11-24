@@ -7,6 +7,9 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using CuratorBook.Models;
+using CuratorBookCore.Data;
 
 namespace CuratorBook
 {
@@ -14,6 +17,9 @@ namespace CuratorBook
     {
         public static void Main(string[] args)
         {
+            var context = new CuratorBookDbContext();
+            context.Database.EnsureCreated();
+
             BuildWebHost(args).Run();
         }
 

@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
 using CuratorBookCore.Data.Tables;
+using CuratorBook.Models;
+using System.Linq;
 
 namespace CuratorBookCore.Contract.MainService
 {
     public class MainService : IMainService
     {
+        protected CuratorBookDbContext Context = new CuratorBookDbContext();
+
         public IList<AnswerRows> GetAnswers(int formId, int groupId)
         {
             throw new System.NotImplementedException();
@@ -18,6 +22,11 @@ namespace CuratorBookCore.Contract.MainService
         public Interviews GetInterview(int userId)
         {
             throw new System.NotImplementedException();
+        }
+
+        public IList<Pages> GetListPages()
+        {
+            return Context.Pages.Select(n => n).ToList();
         }
 
         public IList<Messages> GetMessages(int userId)
