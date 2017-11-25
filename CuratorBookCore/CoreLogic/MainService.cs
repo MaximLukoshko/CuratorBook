@@ -27,7 +27,7 @@ namespace CuratorBookCore.Contract.MainService
 
         public Interviews GetInterview(int userId)
         {
-            throw new System.NotImplementedException();
+            return Context.Interviews.SingleOrDefault(n => n.UserId == userId);
         }
 
         public IList<Pages> GetListPages(Roles role)
