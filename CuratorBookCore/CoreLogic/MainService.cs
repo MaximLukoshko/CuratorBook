@@ -42,7 +42,7 @@ namespace CuratorBookCore.Contract.MainService
 
         public string GetPictureForCommonPage(int pageId)
         {
-            return $"CommonInfo_{pageId}";
+            return $"CommonInfo_{pageId}.jpg";
         }
 
         public IList<RolesRights> GetRightsForRoles()
