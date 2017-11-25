@@ -7,6 +7,11 @@ namespace CuratorBookCore.Data.Tables
     public enum RolesEn
     {
         Guest = 1,
+        Student = 2,
+        Curator = 3,
+        Checker = 4,
+        Admin = 5,
+        Deanery = 6,
     }
 
     public class Roles
