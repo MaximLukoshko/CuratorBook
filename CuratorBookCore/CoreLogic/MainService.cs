@@ -42,7 +42,7 @@ namespace CuratorBookCore.Contract.MainService
 
         public string GetPictureForCommonPage(int pageId)
         {
-            throw new System.NotImplementedException();
+            return $"CommonInfo_{pageId}";
         }
 
         public IList<RolesRights> GetRightsForRoles()
