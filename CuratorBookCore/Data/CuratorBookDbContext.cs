@@ -1,4 +1,5 @@
-﻿using CuratorBookCore.Data.Tables;
+﻿using CuratorBookCore;
+using CuratorBookCore.Data.Tables;
 using CuratorBookCore.Data.Tables.FormsSchema;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,8 +9,7 @@ namespace CuratorBook.Models
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server = MAXIMUS; Database = CuratorBook; Trusted_Connection = True; MultipleActiveResultSets = true");
-            
+            optionsBuilder.UseSqlServer(ApplicationSettings.Instance.ConnectionString);
         }
 
         public DbSet<AnswerRows> AnswerRows { get; set; }

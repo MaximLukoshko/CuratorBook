@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using CuratorBookCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +11,7 @@ namespace CuratorBook
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            ApplicationSettings.Instance.Configure(Configuration);
         }
 
         public IConfiguration Configuration { get; }
