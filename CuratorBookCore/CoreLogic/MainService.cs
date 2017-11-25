@@ -2,6 +2,7 @@
 using CuratorBookCore.Data.Tables;
 using CuratorBook.Models;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace CuratorBookCore.Contract.MainService
 {
@@ -14,6 +15,11 @@ namespace CuratorBookCore.Contract.MainService
             throw new System.NotImplementedException();
         }
 
+        public Roles GetDefaultRole()
+        {
+            return Context.Roles.Include(n => n.RolesRights).Where(n => n.Id == (int)RolesEn.Guest).SingleOrDefault();
+        }
+
         public Forms GetFormModel(int pageId)
         {
             throw new System.NotImplementedException();
@@ -24,9 +30,9 @@ namespace CuratorBookCore.Contract.MainService
             throw new System.NotImplementedException();
         }
 
-        public IList<Pages> GetListPages()
+        public IList<Pages> GetListPages(Roles role)
         {
-            return Context.Pages.Select(n => n).ToList();
+            return Context.Pages.Where(n => role.RolesRights.Any(rr => n.Rights.Id == rr.Id)).ToList();
         }
 
         public IList<Messages> GetMessages(int userId)

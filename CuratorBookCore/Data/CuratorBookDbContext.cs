@@ -9,6 +9,7 @@ namespace CuratorBook.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server = MAXIMUS; Database = CuratorBook; Trusted_Connection = True; MultipleActiveResultSets = true");
+            
         }
 
         public DbSet<AnswerRows> AnswerRows { get; set; }
@@ -23,9 +24,8 @@ namespace CuratorBook.Models
 
 
         public DbSet<Rights> Rights { get; set; }
-        protected DbSet<PagesRights> PagesRights { get; set; }
         protected DbSet<UsersRights> UsersRights { get; set; }
-        protected DbSet<RolesRights> RolesRights { get; set; }
+        public DbSet<RolesRights> RolesRights { get; set; }
 
 
         public DbSet<Groups> Groups { get; set; }

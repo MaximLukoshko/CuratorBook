@@ -5,7 +5,8 @@ namespace CuratorBookCore.Contract.MainService
 {
     public interface IMainService
     {
-        IList<Pages> GetListPages();
+        IList<Pages> GetListPages(Roles role);
+        Roles GetDefaultRole();
 
         string GetPictureForCommonPage(int pageId);
 

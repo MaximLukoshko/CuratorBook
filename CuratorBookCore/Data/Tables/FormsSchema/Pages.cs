@@ -14,6 +14,9 @@ namespace CuratorBookCore.Data.Tables
         public string Name { get; set; }
 
 
+        public Rights Rights { get; set; }
+
+
         public ICollection<Forms> Forms { get; set; }
     }
 }

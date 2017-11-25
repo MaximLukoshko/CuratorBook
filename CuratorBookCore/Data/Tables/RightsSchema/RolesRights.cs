@@ -7,15 +7,10 @@ namespace CuratorBookCore.Data.Tables
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public int RoleId { get; set; }
 
-        [ForeignKey("RoleId")]
-        private Roles Role { get; set; }
+        public int RolesId { get; set; }
 
-        public int RightId { get; set; }
-
-        [ForeignKey("RightId")]
-        public Rights Right { get; set; }
+        public int RightsId { get; set; }
 
 
         public PermissionTypes Permission { get; set; }

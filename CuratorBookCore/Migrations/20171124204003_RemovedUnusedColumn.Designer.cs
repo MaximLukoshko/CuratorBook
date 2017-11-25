@@ -12,9 +12,10 @@ using System;
 namespace CuratorBookCore.Migrations
 {
     [DbContext(typeof(CuratorBookDbContext))]
-    partial class CuratorBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171124204003_RemovedUnusedColumn")]
+    partial class RemovedUnusedColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -176,13 +177,27 @@ namespace CuratorBookCore.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(150);
 
-                    b.Property<int?>("RightsId");
+                    b.HasKey("Id");
+
+                    b.ToTable("Pages");
+                });
+
+            modelBuilder.Entity("CuratorBookCore.Data.Tables.PagesRights", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("PageId");
+
+                    b.Property<int>("RightId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RightsId");
+                    b.HasIndex("PageId");
 
-                    b.ToTable("Pages");
+                    b.HasIndex("RightId");
+
+                    b.ToTable("PagesRights");
                 });
 
             modelBuilder.Entity("CuratorBookCore.Data.Tables.Rights", b =>
@@ -220,7 +235,7 @@ namespace CuratorBookCore.Migrations
 
                     b.Property<int>("RightsId");
 
-                    b.Property<int?>("RolesId");
+                    b.Property<int>("RolesId");
 
                     b.HasKey("Id");
 
@@ -343,23 +358,30 @@ namespace CuratorBookCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("CuratorBookCore.Data.Tables.Pages", b =>
+            modelBuilder.Entity("CuratorBookCore.Data.Tables.PagesRights", b =>
                 {
-                    b.HasOne("CuratorBookCore.Data.Tables.Rights", "Rights")
+                    b.HasOne("CuratorBookCore.Data.Tables.Pages", "Page")
                         .WithMany()
-                        .HasForeignKey("RightsId");
+                        .HasForeignKey("PageId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CuratorBookCore.Data.Tables.Rights", "Right")
+                        .WithMany()
+                        .HasForeignKey("RightId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CuratorBookCore.Data.Tables.RolesRights", b =>
                 {
-                    b.HasOne("CuratorBookCore.Data.Tables.Rights", "Rights")
+                    b.HasOne("CuratorBookCore.Data.Tables.Rights", "Right")
                         .WithMany()
                         .HasForeignKey("RightsId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("CuratorBookCore.Data.Tables.Roles", "Roles")
-                        .WithMany("RolesRights")
-                        .HasForeignKey("RolesId");
+                    b.HasOne("CuratorBookCore.Data.Tables.Roles")
+                        .WithMany("Rights")
+                        .HasForeignKey("RolesId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CuratorBookCore.Data.Tables.Users", b =>

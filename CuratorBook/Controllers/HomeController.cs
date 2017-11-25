@@ -11,7 +11,8 @@ namespace CuratorBook.Controllers
 
         public IActionResult Index()
         {
-            var pages = Service.GetListPages();
+            var guestRole = Service.GetDefaultRole();
+            var pages = Service.GetListPages(guestRole);
             return View();
         }
 

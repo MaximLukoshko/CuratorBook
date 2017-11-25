@@ -4,6 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CuratorBookCore.Data.Tables
 {
+    public enum RolesEn
+    {
+        Guest = 1,
+    }
+
     public class Roles
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -14,6 +19,6 @@ namespace CuratorBookCore.Data.Tables
         public string Name { get; set; }
 
 
-        public ICollection<PagesRights> Rights { get; set; }
+        public List<RolesRights> RolesRights { get; set; }
     }
 }
