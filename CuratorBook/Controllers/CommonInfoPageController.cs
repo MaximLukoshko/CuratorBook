@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using CuratorBook.Models;
 
@@ -12,7 +9,6 @@ namespace CuratorBook.Controllers
         public IActionResult Index(int id)
         {
             var guestRole = Service.GetDefaultRole();
-            InitMenu(guestRole);
 
             CommonInfoPageModel model = new CommonInfoPageModel()
             {

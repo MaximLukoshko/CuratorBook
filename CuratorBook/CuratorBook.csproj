@@ -17,4 +17,8 @@
     <ProjectReference Include="..\CuratorBookCore\CuratorBookCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\HomeController\" />
+  </ItemGroup>
+
 </Project>

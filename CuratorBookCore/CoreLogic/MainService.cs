@@ -3,6 +3,7 @@ using CuratorBookCore.Data.Tables;
 using CuratorBook.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace CuratorBookCore.Contract.MainService
 {
