@@ -4,6 +4,7 @@ using CuratorBook.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Threading.Tasks;
 
 namespace CuratorBookCore.Contract.MainService
 {

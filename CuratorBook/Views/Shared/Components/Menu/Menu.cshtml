@@ -1,9 +1,12 @@
-﻿@model CuratorBook.Models.MenuModel
+﻿@using System.Collections.Generic;
+@using CuratorBookCore.Data.Tables
+
+@model IList<Pages>
 
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" asp-area="" asp-controller="Home" asp-action="Index">Общая информация БГУ <span class="caret"></span></a>
     <ul class="dropdown-menu">
-        @foreach(var page in Model.Pages.Where(n => n.Name.Length > 2))
+        @foreach(var page in Model.Where(n => n.Name.Length > 2))
         {
             <li>
                 @Html.ActionLink(page.Name, "Index", "CommonInfoPage", new { id = page.Id }, null)
