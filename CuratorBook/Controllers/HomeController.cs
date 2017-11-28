@@ -13,6 +13,8 @@ namespace CuratorBook.Controllers
         {
             var guestRole = Service.GetDefaultRole();
             var pages = Service.GetListPages(guestRole);
+            var menuModel = new MenuModel() { Pages = pages };
+            ViewData["Menu"] = menuModel;
             return View();
         }
 

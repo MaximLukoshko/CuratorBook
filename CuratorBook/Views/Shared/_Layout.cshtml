@@ -54,6 +54,9 @@
                             <li><a href="#">Положение о кураторе студенческой группы</a></li>
                         </ul>
                     </li>
+                    @{
+                        Html.RenderPartial("_Menu.cshtml", ViewData["Menu"]);
+                    }
                 </ul>
             </div>
     </nav>
