@@ -1,0 +1,10 @@
+﻿@model CuratorBook.Models.CommonInfoPageModel
+
+@{
+    ViewData["Title"] = $"Page {Model.PageName}";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <img src="@Url.Content("~/Res/Images/" + Model.ImageSrc)" height="750" />
+</div>

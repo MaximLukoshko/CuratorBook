@@ -56,6 +56,7 @@ namespace CuratorBook
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=MainInfo}/{action=Index}/{id?}");
+                    //template: "{controller=CommonInfoPage}/{action=Index}/{id=1}");
             });
         }
     }
