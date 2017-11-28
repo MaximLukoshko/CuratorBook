@@ -28,14 +28,34 @@
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">CuratorBook</a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" asp-area="" asp-controller="Home" asp-action="Index">Общая информация БГУ <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Обложка</a></li>
+                            <li><a href="#">Руководство БГУ</a></li>
+                            <li><a href="#">Студенческая Ассамблея БГУ</a></li>
+                            <li><a href="#">Выдержки из правил внутреннего распорядка БГУ</a></li>
+                            <li><a href="#">Предоставление скидок стоимости обучения</a></li>
+                            <li><a href="#">Психологическая служба БГУ</a></li>
+                            <li><a href="#">Работе кружков и клубов Студенческого городка БГУ</a></li>
+                            <li><a href="#">Творческом коллектив УДК БГУ</a></li>
+                            <li><a href="#">Управление воспитательной работы с молодёжью</a></li>
+                            <li><a href="#">Об оказании материальной помощи</a></li>
+                            <li><a href="#">Гимн БГУ</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Кодекс РБ об образовании</a></li>
+                            <li><a href="#">Государственные праздники и праздничные дни в РБ</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Пример характеристики студента</a></li>
+                            <li><a href="#">Информация об учебном роцессе группы</a></li>
+                            <li><a href="#">Инструкция об организации работы куратора</a></li>
+                            <li><a href="#">Положение о кураторе студенческой группы</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
-        </div>
     </nav>
     <div class="container body-content">
         @RenderBody()
