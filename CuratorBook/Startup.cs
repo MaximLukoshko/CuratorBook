@@ -32,7 +32,7 @@ namespace CuratorBook
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/MainInfo/Error");
             }
 
             app.UseStaticFiles();
@@ -41,7 +41,7 @@ namespace CuratorBook
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=MainInfo}/{action=Index}/{id?}");
             });
         }
     }
