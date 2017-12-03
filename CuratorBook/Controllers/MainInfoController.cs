@@ -9,6 +9,13 @@ namespace CuratorBook.Controllers
     {
         protected IMainService Service = new MainService();
 
+
+        //Example
+        /*[Authorize]
+        public IActionResult Index()
+        {
+            return Content(User.Identity.Name);
+        }*/
         public IActionResult Index()
         {
             var guestRole = Service.GetDefaultRole();
