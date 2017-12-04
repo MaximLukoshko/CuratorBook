@@ -4,7 +4,7 @@ using CuratorBook.Models;
 
 namespace CuratorBook.Controllers
 {
-    public class MainInfoController : BaseCuratorController
+    public class MainInfoController : Controller
     {
 
         //Example
@@ -15,8 +15,8 @@ namespace CuratorBook.Controllers
         }*/
         public IActionResult Index()
         {
-            var guestRole = Service.GetDefaultRole();
-            var pages = Service.GetListPages(guestRole);
+            //var guestRole = Service.GetDefaultRole();
+            //var pages = Service.GetListPages(guestRole);
             return View();
         }
 

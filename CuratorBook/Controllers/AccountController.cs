@@ -6,16 +6,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using CuratorBook.ViewModels;
-using CuratorBook.Models;
+using CuratorBookCore.Data.Tables;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using CuratorBook.Models;
 
 namespace CuratorBook.Controllers
 {
-    public class AccountController : BaseCuratorController
+    public class AccountController : Controller
     {
-        private UserContext db;
-        public AccountController(UserContext context)
+        //private UserContext db;
+        private CuratorBookDbContext db;
+        public AccountController(CuratorBookDbContext context)
         {
             db = context;
         }
@@ -30,7 +32,7 @@ namespace CuratorBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+                Users user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
                 if (user != null)
                 {
                     await Authenticate(model.Email); // аутентификация
@@ -52,11 +54,11 @@ namespace CuratorBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+                Users user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    db.Users.Add(new User { Email = model.Email, Password = model.Password });
+                    db.Users.Add(new Users { Email = model.Email, Password = model.Password, RoleId = 1 });
                     await db.SaveChangesAsync();
 
                     await Authenticate(model.Email); // аутентификация
