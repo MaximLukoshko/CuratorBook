@@ -1,14 +1,11 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using CuratorBook.Models;
-using CuratorBookCore.Contract.MainService;
 
 namespace CuratorBook.Controllers
 {
-    public class MainInfoController : Controller
+    public class MainInfoController : BaseCuratorController
     {
-        protected IMainService Service = new MainService();
-
 
         //Example
         /*[Authorize]

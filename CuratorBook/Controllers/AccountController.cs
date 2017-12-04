@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace CuratorBook.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseCuratorController
     {
         private UserContext db;
         public AccountController(UserContext context)
