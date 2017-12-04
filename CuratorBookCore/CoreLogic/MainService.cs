@@ -16,6 +16,7 @@ namespace CuratorBookCore.Contract.MainService
             var error = string.Empty;
             if (Context.Users.All(n => !n.Email.Equals(user.Email, StringComparison.OrdinalIgnoreCase))) {
                 Context.Users.Add(user);
+                Context.SaveChanges();
             }
             else {
                 error = "Данный Email занят";

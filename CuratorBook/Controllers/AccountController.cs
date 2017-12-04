@@ -13,14 +13,14 @@ using CuratorBook.Models;
 
 namespace CuratorBook.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseCuratorController
     {
         //private UserContext db;
-        private CuratorBookDbContext db;
-        public AccountController(CuratorBookDbContext context)
-        {
-            db = context;
-        }
+        //private CuratorBookDbContext db;
+        //public AccountController(CuratorBookDbContext context)
+        //{
+        //    db = context;
+        //}
         [HttpGet]
         public IActionResult Login()
         {
@@ -32,7 +32,7 @@ namespace CuratorBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                Users user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+                Users user = Service.Authenticate(model.Email, model.Password);
                 if (user != null)
                 {
                     await Authenticate(model.Email); // аутентификация
@@ -54,13 +54,10 @@ namespace CuratorBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                Users user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
-                if (user == null)
+                var user = new Users { Email = model.Email, Password = model.Password, RoleId = 1 };
+                var errMessage = Service.AddNewUser(user);
+                if (string.IsNullOrEmpty(errMessage))
                 {
-                    // добавляем пользователя в бд
-                    db.Users.Add(new Users { Email = model.Email, Password = model.Password, RoleId = 1 });
-                    await db.SaveChangesAsync();
-
                     await Authenticate(model.Email); // аутентификация
 
                     return RedirectToAction("Index", "Home");

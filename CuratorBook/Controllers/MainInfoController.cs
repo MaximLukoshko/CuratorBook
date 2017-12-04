@@ -4,7 +4,7 @@ using CuratorBook.Models;
 
 namespace CuratorBook.Controllers
 {
-    public class MainInfoController : Controller
+    public class MainInfoController : BaseCuratorController
     {
 
         //Example
