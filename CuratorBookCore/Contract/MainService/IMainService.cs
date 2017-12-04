@@ -10,6 +10,9 @@ namespace CuratorBookCore.Contract.MainService
 
         string GetPictureForCommonPage(int pageId);
 
+        Users Authenticate(string email, string password);
+        string AddNewUser(Users user);
+
         Forms GetFormModel(int pageId);
 
         IList<AnswerRows> GetAnswers(int formId, int groupId);

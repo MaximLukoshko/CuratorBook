@@ -3,12 +3,30 @@ using CuratorBookCore.Data.Tables;
 using CuratorBook.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace CuratorBookCore.Contract.MainService
 {
     public class MainService : IMainService
     {
         protected CuratorBookDbContext Context = new CuratorBookDbContext();
+
+        public string AddNewUser(Users user)
+        {
+            var error = string.Empty;
+            if (Context.Users.All(n => !n.Email.Equals(user.Email, StringComparison.OrdinalIgnoreCase))) {
+                Context.Users.Add(user);
+            }
+            else {
+                error = "Данный Email занят";
+            }
+            return error;
+        }
+
+        public Users Authenticate(string email, string password)
+        {
+            return Context.Users.SingleOrDefault(n => n.Email.Equals(email, StringComparison.OrdinalIgnoreCase) && n.Password.Equals(password));
+        }
 
         public IList<AnswerRows> GetAnswers(int formId, int groupId)
         {
