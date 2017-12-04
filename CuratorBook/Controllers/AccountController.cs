@@ -37,7 +37,7 @@ namespace CuratorBook.Controllers
                 {
                     await Authenticate(model.Email); // аутентификация
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "MainInfo");
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
@@ -60,7 +60,7 @@ namespace CuratorBook.Controllers
                 {
                     await Authenticate(model.Email); // аутентификация
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "MainInfo");
                 }
                 else
                     ModelState.AddModelError("", "Некорректные логин и(или) пароль");
