@@ -4,7 +4,7 @@ using CuratorBook.Models;
 
 namespace CuratorBook.Controllers
 {
-    public class CommonInfoPageController : HomeController
+    public class CommonInfoPageController : BaseCuratorController
     {
         public IActionResult Index(int id)
         {

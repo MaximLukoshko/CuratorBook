@@ -22,6 +22,7 @@ namespace CuratorBook.Controllers
 
         public IActionResult Title()
         {
+            var form = Service.GetFormModel(22);
             return View();
         }
 

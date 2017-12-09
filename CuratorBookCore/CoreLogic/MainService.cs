@@ -32,7 +32,7 @@ namespace CuratorBookCore.Contract.MainService
 
         public IList<AnswerRows> GetAnswers(int formId, int groupId)
         {
-            throw new System.NotImplementedException();
+            return Context.AnswerRows.Where(n => n.FormId == formId && n.GroupId == groupId).ToList();
         }
 
         public Roles GetDefaultRole()
@@ -42,7 +42,7 @@ namespace CuratorBookCore.Contract.MainService
 
         public Forms GetFormModel(int pageId)
         {
-            throw new System.NotImplementedException();
+            return Context.Forms.Include(n => n.Controls).SingleOrDefault(n => n.PageId == pageId);
         }
 
         public Interviews GetInterview(int userId)
