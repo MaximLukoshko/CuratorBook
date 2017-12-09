@@ -18,7 +18,7 @@ namespace CuratorBookCore.Data.Tables
         public int FormId { get; set; }
 
         [ForeignKey("FormId")]
-        private Forms Form { get; set; }
+        public Forms Form { get; set; }
 
 
         [StringLength(50)]

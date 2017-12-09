@@ -12,9 +12,10 @@ using System;
 namespace CuratorBookCore.Migrations
 {
     [DbContext(typeof(CuratorBookDbContext))]
-    partial class CuratorBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171209190906_01")]
+    partial class _01
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,8 +45,7 @@ namespace CuratorBookCore.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Type")
-                        .IsRequired();
+                    b.Property<int>("Type");
 
                     b.HasKey("Id");
 

@@ -11,12 +11,12 @@ namespace CuratorBookCore.Data.Tables.FormsSchema
         public int AnswerRowsId { get; set; }
 
         [ForeignKey("AnswerRowsId")]
-        protected AnswerRows Row { get; set; }
+        public AnswerRows Row { get; set; }
 
         public int ControlId { get; set; }
 
         [ForeignKey("ControlId")]
-        protected FormsControls Control { get; set; }
+        public FormsControls Control { get; set; }
 
         public string Value { get; set; }
     }

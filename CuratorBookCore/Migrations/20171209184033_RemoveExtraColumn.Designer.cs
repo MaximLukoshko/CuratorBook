@@ -12,9 +12,10 @@ using System;
 namespace CuratorBookCore.Migrations
 {
     [DbContext(typeof(CuratorBookDbContext))]
-    partial class CuratorBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171209184033_RemoveExtraColumn")]
+    partial class RemoveExtraColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,8 +45,7 @@ namespace CuratorBookCore.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Type")
-                        .IsRequired();
+                    b.Property<int>("Type");
 
                     b.HasKey("Id");
 
@@ -104,8 +104,6 @@ namespace CuratorBookCore.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AnswerRowsId");
-
-                    b.HasIndex("ControlId");
 
                     b.ToTable("AnswerValues");
                 });
@@ -314,14 +312,9 @@ namespace CuratorBookCore.Migrations
 
             modelBuilder.Entity("CuratorBookCore.Data.Tables.FormsSchema.AnswerValues", b =>
                 {
-                    b.HasOne("CuratorBookCore.Data.Tables.AnswerRows", "Row")
+                    b.HasOne("CuratorBookCore.Data.Tables.AnswerRows")
                         .WithMany("Answers")
                         .HasForeignKey("AnswerRowsId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("CuratorBookCore.Data.Tables.FormsControls", "Control")
-                        .WithMany()
-                        .HasForeignKey("ControlId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
