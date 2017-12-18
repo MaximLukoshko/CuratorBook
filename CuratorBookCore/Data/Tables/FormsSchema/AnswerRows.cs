@@ -13,13 +13,13 @@ namespace CuratorBookCore.Data.Tables
         public int FormId { get; set; }
 
         [ForeignKey("FormId")]
-        protected Forms Form { get; set; }
+        public Forms Form { get; set; }
 
 
         public int GroupId { get; set; }
 
         [ForeignKey("GroupId")]
-        protected Groups Group { get; set; }
+        public Groups Group { get; set; }
 
 
         public ICollection<AnswerValues> Answers { get; set; }

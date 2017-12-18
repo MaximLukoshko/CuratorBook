@@ -19,6 +19,7 @@ namespace CuratorBookCore.Data.Tables
         public string Name { get; set; }
 
 
-        List<RolesRights> RolesRights { get; set; }
+        public List<RolesRights> RolesRights { get; set; }
+        public List<UsersRights> UsersRights { get; set; }
     }
 }

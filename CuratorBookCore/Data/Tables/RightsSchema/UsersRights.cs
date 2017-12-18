@@ -10,7 +10,7 @@ namespace CuratorBookCore.Data.Tables
         public int UserId { get; set; }
 
         [ForeignKey("UserId")]
-        private Users User { get; set; }
+        public Users User { get; set; }
 
         public int RightId { get; set; }
 

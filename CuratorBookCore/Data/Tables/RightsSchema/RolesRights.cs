@@ -10,7 +10,13 @@ namespace CuratorBookCore.Data.Tables
 
         public int RolesId { get; set; }
 
+        [ForeignKey("RolesId")]
+        public Roles Roles { get; set; }
+
         public int RightsId { get; set; }
+
+        [ForeignKey("RightsId")]
+        public Rights Rights { get; set; }
 
 
         public PermissionTypes Permission { get; set; }

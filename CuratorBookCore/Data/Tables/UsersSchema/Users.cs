@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CuratorBookCore.Data.Tables
@@ -31,5 +32,7 @@ namespace CuratorBookCore.Data.Tables
 
         [StringLength(30)]
         public string Email { get; set; }
+
+        public List<UsersRights> UsersRights { get; set; }
     }
 }

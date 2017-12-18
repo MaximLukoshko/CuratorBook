@@ -13,10 +13,10 @@ namespace CuratorBook.Models
         }
 
         public DbSet<AnswerRows> AnswerRows { get; set; }
-        protected DbSet<AnswerValues> AnswerValues { get; set; }
-        protected DbSet<Controls> Controls { get; set; }
+        public DbSet<AnswerValues> AnswerValues { get; set; }
+        public DbSet<Controls> Controls { get; set; }
         public DbSet<Forms> Forms { get; set; }
-        protected DbSet<FormsControls> FormsControls { get; set; }
+        public DbSet<FormsControls> FormsControls { get; set; }
         public DbSet<Pages> Pages { get; set; }
 
 
@@ -24,7 +24,7 @@ namespace CuratorBook.Models
 
 
         public DbSet<Rights> Rights { get; set; }
-        protected DbSet<UsersRights> UsersRights { get; set; }
+        public DbSet<UsersRights> UsersRights { get; set; }
         public DbSet<RolesRights> RolesRights { get; set; }
 
 
